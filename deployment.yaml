@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikify-deployment
+  labels:
+    app: wikify
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wikify
+  template:
+    metadata:
+      labels:
+        app: wikify
+    spec:
+      containers:
+      - name: wikify
+        image: wikify:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
